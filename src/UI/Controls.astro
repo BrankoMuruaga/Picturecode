@@ -5,11 +5,11 @@ import Settings from "../icons/Settings.astro";
 <section
   class="fixed left-1/2 bottom-5 transform -translate-x-1/2 flex gap-4 items-center justify-center bg-yellow px-7 py-3 rounded-full shadow-habitz max-w-4/6 m-auto"
 >
-  <button
+  <!-- <button
     id="settings-btn"
     class="shadow-habitz rounded-[8px] p-1 cursor-pointer hover:bg-orange transition-colors duration-200"
     ><Settings /></button
-  >
+  > -->
   <select
     id="language-select"
     class="w-36 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
@@ -47,7 +47,18 @@ import Settings from "../icons/Settings.astro";
     <option value="tokyo-night">Tokyo Night</option>
     <option value="abyss">Abyss</option>
   </select>
-  <div class="flex items-center gap-2">
+  <select
+    id="font-size-range"
+    class="w-20 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
+  >
+    <option value="12">12px</option>
+    <option value="14">14px</option>
+    <option value="16" selected>16px</option>
+    <option value="18">18px</option>
+    <option value="20">20px</option>
+    <option value="24">24px</option>
+  </select>
+  <!-- <div class="flex items-center gap-2">
     <label for="font-size-range" class="text-sm font-medium text-black"
       >Fuente:</label
     >
@@ -63,7 +74,7 @@ import Settings from "../icons/Settings.astro";
       id="font-size-display"
       class="text-sm font-medium text-black min-w-[35px]">16px</span
     >
-  </div>
+  </div> -->
 </section>
 
 <style>
@@ -72,53 +83,6 @@ import Settings from "../icons/Settings.astro";
       box-shadow: 0 2px 0 #000;
       transform: translateY(2px);
     }
-  }
-
-  /* Estilos personalizados para el range input */
-  input[type="range"] {
-    -webkit-appearance: none;
-    background: transparent;
-  }
-
-  input[type="range"]::-webkit-slider-track {
-    background: #ff995f;
-    height: 8px;
-    border-radius: 4px;
-    border: 2px solid #000;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #ffbd2e;
-    border: 2px solid #000;
-    cursor: pointer;
-    box-shadow: 0 2px 0 #000;
-  }
-
-  input[type="range"]::-webkit-slider-thumb:active {
-    box-shadow: 0 1px 0 #000;
-    transform: translateY(1px);
-  }
-
-  input[type="range"]::-moz-range-track {
-    background: #ff995f;
-    height: 8px;
-    border-radius: 4px;
-    border: 2px solid #000;
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #ffbd2e;
-    border: 2px solid #000;
-    cursor: pointer;
-    box-shadow: 0 2px 0 #000;
   }
 </style>
 
