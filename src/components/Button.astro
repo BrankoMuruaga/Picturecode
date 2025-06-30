@@ -1,0 +1,19 @@
+---
+const { id } = Astro.props;
+---
+
+<button
+  id={id}
+  class="px-6 py-3 bg-yellow rounded-xl font-semibold text-lg cursor-pointer hover:bg-orange-400 shadow-habitz"
+>
+  Descargar
+</button>
+
+<style>
+  button {
+    &:active {
+      box-shadow: 0 2px 0 #000;
+      transform: translateY(2px);
+    }
+  }
+</style>

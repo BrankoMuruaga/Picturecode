@@ -1,0 +1,46 @@
+---
+import Settings from "../icons/Settings.astro";
+---
+
+<section
+  class="fixed left-1/2 bottom-5 transform -translate-x-1/2 flex gap-4 items-center justify-center bg-yellow px-7 py-3 rounded-full shadow-habitz max-w-4/6 m-auto"
+>
+  <button
+    class="shadow-habitz rounded-[8px] p-1 cursor-pointer hover:bg-orange transition-colors duration-200"
+    ><Settings /></button
+  >
+  <select
+    class="w-36 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
+  >
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+    <option value="java">Java</option>
+    <option value="csharp">C#</option>
+    <option value="cpp">C++</option>
+    <option value="typescript">TypeScript</option>
+    <option value="go">Go</option>
+    <option value="ruby">Ruby</option>
+  </select>
+  <select
+    class="w-36 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
+  >
+    <option value="default">VSCode Default</option>
+    <option value="dark-plus">Dark+ (default dark)</option>
+    <option value="light-plus">Light+ (default light)</option>
+    <option value="monokai">Monokai</option>
+    <option value="solarized-dark">Solarized Dark</option>
+    <option value="solarized-light">Solarized Light</option>
+    <option value="dracula">Dracula</option>
+    <option value="github-dark">GitHub Dark</option>
+    <option value="github-light">GitHub Light</option>
+  </select>
+</section>
+
+<style>
+  button {
+    &:active {
+      box-shadow: 0 2px 0 #000;
+      transform: translateY(2px);
+    }
+  }
+</style>

@@ -1,0 +1,88 @@
+/* Forzar alineación y tamaño correcto del editor de código */
+
+@import "tailwindcss";
+
+@theme {
+  --color-yellow: #ffbd2e;
+  --color-orange: #ff995f;
+  --color-red: #ff5f56;
+  --color-green: #27c93f;
+  --color-background: #23232b;
+  --color-code-bg: #323241;
+  --color-text-disabled: #99a1af;
+}
+
+.shadow-habitz {
+  box-shadow: 0 4px 0 #000;
+  border: solid 2px #000;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #23232c;
+  padding: 10px;
+}
+
+/* Elimina fondo de línea activa y su borde */
+.cm-activeLine {
+  background: none !important;
+}
+.cm-line {
+  border: none !important;
+}
+.cm-scroller {
+  overflow: hidden !important; /* Asegura que el scroll funcione */
+  background: transparent !important; /* Elimina fondo */
+}
+
+/* Elimina borde exterior al enfocar el editor */
+.cm-editor {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Ajusta el fondo para que todo el área sea igual */
+.cm-editor,
+.cm-scroller,
+.cm-content,
+.cm-gutters,
+.cm-gutterElement {
+  background: transparent !important; /* O el color que quieras */
+  border: none !important; /* Quita bordes */
+}
+
+/* Opcional: saca el outline azul de foco */
+.cm-editor.cm-focused {
+  outline: none !important;
+}
+
+/* Color del número de línea */
+.cm-lineNumbers .cm-gutterElement {
+  color: #7c7f9a !important; /* Elegí el color que prefieras */
+  background: transparent !important; /* Por si el tema inyecta algo */
+}
+
+.cm-gutters {
+  /* display: none !important; */
+}
+
+#code .cm-editor {
+  min-height: 140px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: block;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#code .cm-content {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}

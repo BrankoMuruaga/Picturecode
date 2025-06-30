@@ -1,0 +1,29 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<nav id="nav" class="flex items-center justify-between">
+  <div
+    id="logo"
+    class="inline-block px-6 py-4 bg-yellow rounded-full font-semibold text-3xl"
+  >
+    <h1 class="select-none">Picturecode</h1>
+  </div>
+  <div>
+    <Button id="download" />
+  </div>
+</nav>
+
+<style>
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("download");
+
+  btn?.addEventListener("click", () => {
+    btn.dispatchEvent(new CustomEvent("download", { bubbles: true }));
+  });
+</script>

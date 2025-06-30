@@ -1,0 +1,48 @@
+---
+import Dropdown from "../icons/Dropdown.astro";
+
+const { placeholder = "Select an option", options = [], id } = Astro.props;
+---
+
+<div class="selection-container relative w-40" id={id}>
+  <section
+    id={"options-container-" + id}
+    class="options-container hidden overflow-clip absolute bg-yellow rounded-lg bottom-full left-0 mb-2 z-10 w-full"
+  >
+    <ul class="list-none p-0 m-0">
+      {
+        options.map((option: string) => (
+          <li
+            class="p-2 select-none hover:bg-orange cursor-pointer"
+            tabindex="0"
+          >
+            {option}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <button
+    type="button"
+    class="select-button flex justify-between py-1 px-4 items-center gap-4 cursor-pointer w-full"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+  >
+    <span class="selected-label">{placeholder}</span>
+    <Dropdown />
+  </button>
+</div>
+
+<script></script>
+
+<style>
+  .selection-container {
+    border: solid 2px #000;
+    border-radius: 8px;
+  }
+
+  .options-container {
+    border: solid 2px #000;
+    border-radius: 8px;
+  }
+</style>
