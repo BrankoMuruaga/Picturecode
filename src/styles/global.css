@@ -27,8 +27,13 @@ body {
 }
 
 /* Elimina fondo de línea activa y su borde */
-.cm-activeLine {
+.cm-editor,
+.cm-scroller,
+.cm-content,
+.cm-activeLine,
+.cm-line {
   background: none !important;
+  width: 100% !important; /* Asegura que ocupe todo el ancho */
 }
 .cm-line {
   border: none !important;

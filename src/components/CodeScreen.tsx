@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Resizable } from "re-resizable";
 import CodeHeader from "./CodeHeader";
 import CodeEditor from "./CodeEditor";
@@ -10,26 +10,79 @@ export default function CodeScreen() {
   const [padding, setPadding] = useState(10);
   const [scale, setScale] = useState(1);
   const [bgColor, setBgColor] = useState("transparent");
+  const [language, setLanguage] = useState("javascript");
+  const [theme, setTheme] = useState("dark");
+  const [fontSize, setFontSize] = useState(16);
 
   useDownloadAsImage(scale);
+
+  // Escuchar eventos de los controles
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail.language);
+    };
+
+    const handleThemeChange = (event: CustomEvent) => {
+      setTheme(event.detail.theme);
+    };
+
+    const handleFontSizeChange = (event: CustomEvent) => {
+      setFontSize(event.detail.fontSize);
+    };
+
+    window.addEventListener(
+      "language-selected",
+      handleLanguageChange as EventListener
+    );
+    window.addEventListener(
+      "theme-selected",
+      handleThemeChange as EventListener
+    );
+    window.addEventListener(
+      "font-size-changed",
+      handleFontSizeChange as EventListener
+    );
+
+    return () => {
+      window.removeEventListener(
+        "language-selected",
+        handleLanguageChange as EventListener
+      );
+      window.removeEventListener(
+        "theme-selected",
+        handleThemeChange as EventListener
+      );
+      window.removeEventListener(
+        "font-size-changed",
+        handleFontSizeChange as EventListener
+      );
+    };
+  }, []);
 
   return (
     <div className="w-full min-h-[420px] h-full flex justify-center items-center">
       <Resizable
-        defaultSize={{ width: 540, height: "auto" }}
-        minWidth={360}
+        defaultSize={{ width: 640, height: "auto" }}
+        minWidth={460}
         maxWidth="70%"
         enable={{ left: true, right: true, top: false, bottom: false }}
         className="rounded-[12px] shadow-[0_6px_32px_rgba(20,20,20,0.13)] bg-transparent flex items-stretch overflow-hidden"
       >
         <div
           id="code"
-          className={`w-full h-full flex rounded-xl transition-all duration-200 ease-in-out`}
+          className="w-full h-full flex rounded-xl transition-all duration-200 ease-in-out"
           style={{ padding: `${padding}px`, backgroundColor: bgColor }}
         >
           <section className="rounded-xl bg-code-bg w-full min-h-[200px] flex flex-col px-4 pt-2 pb-3">
             <CodeHeader title={title} setTitle={setTitle} />
-            <CodeEditor code={code} setCode={setCode} />
+
+            <CodeEditor
+              code={code}
+              setCode={setCode}
+              language={language}
+              theme={theme}
+              fontSize={fontSize}
+            />
           </section>
         </div>
       </Resizable>
