@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import { Resizable } from "re-resizable";
-import CodeHeader from "./CodeHeader";
-import CodeEditor from "./CodeEditor";
+import { useCallback, useEffect, useState } from "react";
 import { useDownloadAsImage } from "../utils/useDownloadAsImage";
+import CodeEditor from "./CodeEditor";
+import CodeHeader from "./CodeHeader";
+import { getEditorBackground } from "../utils/utils";
 
 export default function CodeScreen() {
   const [code, setCode] = useState("console.log('¡Hola mundo!');");
@@ -12,6 +13,7 @@ export default function CodeScreen() {
   const [bgColor, setBgColor] = useState("transparent");
   const [language, setLanguage] = useState("javascript");
   const [theme, setTheme] = useState("dark");
+  const editorBgColor = getEditorBackground(theme);
   const [fontSize, setFontSize] = useState(16);
 
   useDownloadAsImage(scale);
@@ -70,10 +72,13 @@ export default function CodeScreen() {
       >
         <div
           id="code"
-          className="w-full h-full flex rounded-xl transition-all duration-200 ease-in-out"
+          className="w-full h-full flex rounded-xl transition-colors duration-200 ease-in-out"
           style={{ padding: `${padding}px`, backgroundColor: bgColor }}
         >
-          <section className="rounded-xl bg-code-bg w-full min-h-[200px] flex flex-col px-4 pt-2 pb-3">
+          <section
+            className="rounded-xl w-full min-h-[200px] flex flex-col px-4 pt-2 pb-3 transition-all duration-500 ease-in-out"
+            style={{ backgroundColor: editorBgColor }}
+          >
             <CodeHeader title={title} setTitle={setTitle} />
 
             <CodeEditor

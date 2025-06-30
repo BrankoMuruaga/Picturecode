@@ -159,7 +159,9 @@ export const getThemeExtension = async (theme: string): Promise<Extension> => {
       }
     case "material-light":
       try {
-        const { materialLight } = await import("@uiw/codemirror-theme-material");
+        const { materialLight } = await import(
+          "@uiw/codemirror-theme-material"
+        );
         return materialLight;
       } catch {
         return [];
@@ -174,21 +176,27 @@ export const getThemeExtension = async (theme: string): Promise<Extension> => {
     case "solarized":
     case "solarized-dark":
       try {
-        const { solarizedDark } = await import("@uiw/codemirror-theme-solarized");
+        const { solarizedDark } = await import(
+          "@uiw/codemirror-theme-solarized"
+        );
         return solarizedDark;
       } catch {
         return oneDark;
       }
     case "solarized-light":
       try {
-        const { solarizedLight } = await import("@uiw/codemirror-theme-solarized");
+        const { solarizedLight } = await import(
+          "@uiw/codemirror-theme-solarized"
+        );
         return solarizedLight;
       } catch {
         return [];
       }
     case "tokyo-night":
       try {
-        const { tokyoNight } = await import("@uiw/codemirror-theme-tokyo-night");
+        const { tokyoNight } = await import(
+          "@uiw/codemirror-theme-tokyo-night"
+        );
         return tokyoNight;
       } catch {
         return oneDark;
@@ -204,3 +212,25 @@ export const getThemeExtension = async (theme: string): Promise<Extension> => {
       return []; // Tema por defecto (claro)
   }
 };
+
+export const themeBackgrounds: Record<string, string> = {
+  dark: "#282c34",
+  onedark: "#282c34",
+  "github-light": "#fff",
+  light: "#fff",
+  "github-dark": "#0d1117",
+  "vscode-dark": "#1e1e1e",
+  dracula: "#282a36",
+  monokai: "#272822",
+  "material-dark": "#263238",
+  "material-light": "#fafafa",
+  nord: "#2e3440",
+  "solarized-dark": "#002b36",
+  "solarized-light": "#fdf6e3",
+  "tokyo-night": "#1a1b26",
+  abyss: "#0f111a",
+};
+
+export function getEditorBackground(theme: string): string {
+  return themeBackgrounds[theme.toLowerCase()] ?? "#fff";
+}

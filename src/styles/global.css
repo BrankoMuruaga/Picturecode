@@ -32,15 +32,16 @@ body {
 .cm-content,
 .cm-activeLine,
 .cm-line {
-  background: none !important;
   width: 100% !important; /* Asegura que ocupe todo el ancho */
 }
-.cm-line {
+.cm-line,
+.cm-gutters,
+.cm-gutterElement {
   border: none !important;
+  background: none !important; /* Elimina fondo de línea activa */
 }
 .cm-scroller {
   overflow: hidden !important; /* Asegura que el scroll funcione */
-  background: transparent !important; /* Elimina fondo */
 }
 
 /* Elimina borde exterior al enfocar el editor */
@@ -55,7 +56,6 @@ body {
 .cm-content,
 .cm-gutters,
 .cm-gutterElement {
-  background: transparent !important; /* O el color que quieras */
   border: none !important; /* Quita bordes */
 }
 
@@ -67,7 +67,6 @@ body {
 /* Color del número de línea */
 .cm-lineNumbers .cm-gutterElement {
   color: #7c7f9a !important; /* Elegí el color que prefieras */
-  background: transparent !important; /* Por si el tema inyecta algo */
 }
 
 .cm-gutters {
@@ -90,4 +89,10 @@ body {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
+}
+
+.cm-editor,
+.cm-scroller,
+.cm-content {
+  background: transparent !important;
 }
