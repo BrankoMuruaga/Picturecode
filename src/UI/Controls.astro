@@ -1,80 +1,106 @@
 ---
 import Settings from "../icons/Settings.astro";
+import Tooltip from "./Tooltip.astro";
 ---
 
 <section
-  class="fixed left-1/2 bottom-5 transform -translate-x-1/2 flex gap-4 items-center justify-center bg-yellow px-7 py-3 rounded-full shadow-habitz max-w-4/6 m-auto"
+  class="fixed left-1/2 bottom-5 transform -translate-x-1/2 flex gap-6 items-center justify-center bg-yellow px-8 py-4 rounded-full shadow-habitz max-w-4/6 m-auto border border-orange-300"
+  aria-label="Controles de personalización de código"
 >
-  <!-- <button
-    id="settings-btn"
-    class="shadow-habitz rounded-[8px] p-1 cursor-pointer hover:bg-orange transition-colors duration-200"
-    ><Settings /></button
-  > -->
-  <select
-    id="language-select"
-    class="w-36 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
-  >
-    <option value="javascript">JavaScript</option>
-    <option value="typescript">TypeScript</option>
-    <option value="python">Python</option>
-    <option value="html">HTML</option>
-    <option value="css">CSS</option>
-    <option value="json">JSON</option>
-    <option value="xml">XML</option>
-    <option value="sql">SQL</option>
-    <option value="cpp">C++</option>
-    <option value="java">Java</option>
-    <option value="php">PHP</option>
-    <option value="rust">Rust</option>
-    <option value="go">Go</option>
-  </select>
-  <select
-    id="theme-select"
-    class="w-44 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
-  >
-    <option value="dark">One Dark</option>
-    <option value="light">Claro</option>
-    <option value="github-light">GitHub Light</option>
-    <option value="github-dark">GitHub Dark</option>
-    <option value="vscode-dark">VS Code Dark</option>
-    <option value="dracula">Dracula</option>
-    <option value="monokai">Monokai</option>
-    <option value="material-dark">Material Dark</option>
-    <option value="material-light">Material Light</option>
-    <option value="nord">Nord</option>
-    <option value="solarized-dark">Solarized Dark</option>
-    <option value="solarized-light">Solarized Light</option>
-    <option value="tokyo-night">Tokyo Night</option>
-    <option value="abyss">Abyss</option>
-  </select>
-  <select
-    id="font-size-range"
-    class="w-20 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer"
-  >
-    <option value="12">12px</option>
-    <option value="14">14px</option>
-    <option value="16" selected>16px</option>
-    <option value="18">18px</option>
-    <option value="20">20px</option>
-    <option value="24">24px</option>
-  </select>
-  <!-- <div class="flex items-center gap-2">
-    <label for="font-size-range" class="text-sm font-medium text-black"
-      >Fuente:</label
+  <div class="flex flex-col items-center group relative">
+    <select
+      id="language-select"
+      class="w-36 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer border border-gray-300"
+      aria-label="Seleccionar lenguaje de código"
     >
-    <input
-      type="range"
+      <option value="javascript">JavaScript</option>
+      <option value="typescript">TypeScript</option>
+      <option value="python">Python</option>
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="json">JSON</option>
+      <option value="xml">XML</option>
+      <option value="sql">SQL</option>
+      <option value="cpp">C++</option>
+      <option value="java">Java</option>
+      <option value="php">PHP</option>
+      <option value="rust">Rust</option>
+      <option value="go">Go</option>
+    </select>
+    <!-- Label oculto, solo tooltip -->
+    <Tooltip text="Lenguaje del código" />
+  </div>
+  <div class="flex flex-col items-center group relative">
+    <select
+      id="theme-select"
+      class="w-44 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer border border-gray-300"
+      aria-label="Seleccionar tema de código"
+    >
+      <option value="dark">One Dark</option>
+      <option value="light">Claro</option>
+      <option value="github-light">GitHub Light</option>
+      <option value="github-dark">GitHub Dark</option>
+      <option value="vscode-dark">VS Code Dark</option>
+      <option value="dracula">Dracula</option>
+      <option value="monokai">Monokai</option>
+      <option value="material-dark">Material Dark</option>
+      <option value="material-light">Material Light</option>
+      <option value="nord">Nord</option>
+      <option value="solarized-dark">Solarized Dark</option>
+      <option value="solarized-light">Solarized Light</option>
+      <option value="tokyo-night">Tokyo Night</option>
+      <option value="abyss">Abyss</option>
+    </select>
+    <!-- Label oculto, solo tooltip -->
+    <Tooltip text="Apariencia" />
+  </div>
+
+  <div class="flex flex-col items-center group relative">
+    <select
       id="font-size-range"
-      min="12"
-      max="24"
-      value="16"
-      class="w-20 h-2 bg-orange rounded-lg appearance-none cursor-pointer shadow-habitz"
-    />
-    <span
-      id="font-size-display"
-      class="text-sm font-medium text-black min-w-[35px]">16px</span
+      class="w-20 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer border border-gray-300"
+      aria-label="Seleccionar tamaño de fuente"
     >
-  </div> -->
+      <option value="12">12px</option>
+      <option value="14">14px</option>
+      <option value="16" selected>16px</option>
+      <option value="18">18px</option>
+      <option value="20">20px</option>
+      <option value="24">24px</option>
+    </select>
+    <!-- Label oculto, solo tooltip -->
+    <Tooltip text="Fuente" />
+  </div>
+
+  <div class="flex flex-col items-center group relative">
+    <select
+      id="padding-select"
+      class="w-20 rounded-[8px] p-1 bg-yellow text-black shadow-habitz focus:outline-0 cursor-pointer border border-gray-300"
+      aria-label="Seleccionar padding"
+    >
+      <option value="0">0px</option>
+      <option value="2">2px</option>
+      <option value="4">4px</option>
+      <option value="6">6px</option>
+      <option value="8">8px</option>
+      <option value="10" selected>10px</option>
+      <option value="12">12px</option>
+      <option value="14">14px</option>
+    </select>
+    <!-- Label oculto, solo tooltip -->
+    <Tooltip text="Padding de fondo" />
+  </div>
+
+  <div class="flex flex-col items-center group relative">
+    <input
+      type="color"
+      id="color-picker"
+      class="size-10 rounded-md cursor-pointer shadow-habitz bg-yellow border border-gray-300"
+      aria-label="Seleccionar color de fondo"
+    />
+    <!-- Label oculto, solo tooltip -->
+    <Tooltip text="Color de fondo" />
+  </div>
 </section>
 
 <style>
@@ -83,6 +109,19 @@ import Settings from "../icons/Settings.astro";
       box-shadow: 0 2px 0 #000;
       transform: translateY(2px);
     }
+  }
+  .group {
+    min-width: 80px;
+    gap: 0.25rem;
+  }
+  select,
+  input[type="color"] {
+    transition: border 0.2s;
+  }
+  select:focus,
+  input[type="color"]:focus {
+    border-color: #f59e42;
+    outline: none;
   }
 </style>
 
@@ -101,6 +140,12 @@ import Settings from "../icons/Settings.astro";
     const fontSizeDisplay = document.getElementById(
       "font-size-display"
     ) as HTMLSpanElement;
+    const paddingSelect = document.getElementById(
+      "padding-select"
+    ) as HTMLSelectElement;
+    const colorPicker = document.getElementById(
+      "color-picker"
+    ) as HTMLInputElement;
 
     languageSelect?.addEventListener("change", (event) => {
       const target = event.target as HTMLSelectElement;
@@ -139,6 +184,34 @@ import Settings from "../icons/Settings.astro";
       window.dispatchEvent(
         new CustomEvent("font-size-changed", {
           detail: { fontSize: parseInt(fontSize) },
+        })
+      );
+    });
+
+    // Color picker event listener
+
+    colorPicker?.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement;
+      const selectedColor = target.value;
+      console.log("Selected color:", selectedColor);
+
+      // Dispatch custom event to communicate with React components
+      window.dispatchEvent(
+        new CustomEvent("bg-color-changed", {
+          detail: { color: selectedColor },
+        })
+      );
+    });
+
+    // Padding select event listener
+    paddingSelect?.addEventListener("change", (event) => {
+      const target = event.target as HTMLSelectElement;
+      const paddingValue = target.value;
+
+      // Dispatch custom event to communicate with React components
+      window.dispatchEvent(
+        new CustomEvent("padding-changed", {
+          detail: { padding: parseInt(paddingValue) },
         })
       );
     });

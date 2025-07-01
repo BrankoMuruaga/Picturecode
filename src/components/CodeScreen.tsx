@@ -10,7 +10,7 @@ export default function CodeScreen() {
   const [title, setTitle] = useState("Untitled-0");
   const [padding, setPadding] = useState(10);
   const [scale, setScale] = useState(1);
-  const [bgColor, setBgColor] = useState("transparent");
+  const [bgColor, setBgColor] = useState("#ffbd2e");
   const [language, setLanguage] = useState("javascript");
   const [theme, setTheme] = useState("dark");
   const editorBgColor = getEditorBackground(theme);
@@ -32,6 +32,14 @@ export default function CodeScreen() {
       setFontSize(event.detail.fontSize);
     };
 
+    const handleBgColorChange = (event: CustomEvent) => {
+      setBgColor(event.detail.color);
+    };
+
+    const handlePaddingChange = (event: CustomEvent) => {
+      setPadding(event.detail.padding);
+    };
+
     window.addEventListener(
       "language-selected",
       handleLanguageChange as EventListener
@@ -43,6 +51,14 @@ export default function CodeScreen() {
     window.addEventListener(
       "font-size-changed",
       handleFontSizeChange as EventListener
+    );
+    window.addEventListener(
+      "bg-color-changed",
+      handleBgColorChange as EventListener
+    );
+    window.addEventListener(
+      "padding-changed",
+      handlePaddingChange as EventListener
     );
 
     return () => {
@@ -58,6 +74,14 @@ export default function CodeScreen() {
         "font-size-changed",
         handleFontSizeChange as EventListener
       );
+      window.removeEventListener(
+        "bg-color-changed",
+        handleBgColorChange as EventListener
+      );
+      window.removeEventListener(
+        "padding-changed",
+        handlePaddingChange as EventListener
+      );
     };
   }, []);
 
@@ -72,7 +96,7 @@ export default function CodeScreen() {
       >
         <div
           id="code"
-          className="w-full h-full flex rounded-xl transition-colors duration-200 ease-in-out"
+          className="w-full h-full flex rounded-xl transition-all duration-300 ease-in-out"
           style={{ padding: `${padding}px`, backgroundColor: bgColor }}
         >
           <section
