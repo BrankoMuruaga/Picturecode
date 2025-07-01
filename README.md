@@ -1,48 +1,41 @@
-# Astro Starter Kit: Basics
+# 🖼️ Picturecode
 
-```sh
-npm create astro@latest -- --template basics
-```
+¡Convierte tu código en imágenes hermosas y personalizables!
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Picturecode es una herramienta web que te permite pegar, editar y exportar fragmentos de código como imágenes listas para compartir en redes sociales, presentaciones o portfolios. Inspirado en Carbon y Ray.so, pero con controles minimalistas y experiencia ultra rápida.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ✨ Características principales
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- **Editor de código** con soporte para múltiples lenguajes y temas.
+- **Controles de personalización** intuitivos: padding, color de fondo, fuente, tema, y más.
+- **Fondo transparente**: exporta tu código sin fondo para overlays o presentaciones.
+- **Descarga instantánea** en PNG y JPEG (con escalas x1, x2, x4).
 
-## 🚀 Project Structure
+## 🚀 ¿Cómo usar?
 
-Inside of your Astro project, you'll see the following folders and files:
+1. Escribe o pega tu código en el editor.
+2. Personaliza el aspecto usando los controles inferiores:
+   - Cambia el lenguaje, tema, padding, fuente o color de fondo.
+3. Haz clic en el botón de descarga (⬇️) y elige formato y escala.
+4. ¡Listo! Comparte tu imagen donde quieras.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Tecnologías
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- [Astro](https://astro.build/) + [React](https://react.dev/)
+- [re-resizable](https://github.com/bokuweb/re-resizable) para el área de código
+- Hooks y eventos personalizados para comunicación entre UI y lógica
 
-## 🧞 Commands
+## 📦 Estructura
 
-All commands are run from the root of the project, from a terminal:
+- `src/components/` — Lógica React (editor, header, dropdowns)
+- `src/UI/` — Controles, tooltips y layout en Astro
+- `src/utils/` — Hooks y utilidades para exportar imágenes
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 💡 Inspiración
 
-## 👀 Want to learn more?
+- [Carbon](https://carbon.now.sh/)
+- [Ray.so](https://ray.so/)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+¡Haz tu código visualmente irresistible con Picturecode! ✨
