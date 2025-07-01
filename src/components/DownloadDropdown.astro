@@ -1,0 +1,129 @@
+---
+const formats = [
+  { label: "PNG", value: "png" },
+  { label: "JPEG", value: "jpeg" },
+];
+const scales = [
+  { label: "x2", value: 2 },
+  { label: "x4", value: 4 },
+];
+
+const { onDownload, scale, setScale } = Astro.props;
+---
+
+<div class="relative" id="astro-download-dropdown">
+  <button
+    id="download"
+    class="shadow-habitz rounded-2xl px-5 py-3 cursor-pointer hover:bg-orange transition-colors duration-200 flex items-center gap-2 bg-yellow"
+    aria-haspopup="true"
+    type="button"
+    onclick="toggleDropdown(event)"
+  >
+    Descargar
+  </button>
+  <div
+    id="dropdown-menu"
+    class="absolute hidden right-0 mt-2 w-40 bg-yellow rounded-lg shadow-lg border-2 border-black z-50 flex-col py-2 animate-fade-in"
+  >
+    <button
+      class="text-left cursor-pointer px-4 py-2 hover:bg-orange/70 transition-colors text-black text-sm"
+      onclick="downloadFormat('png')"
+      type="button"
+    >
+      Formato PNG
+    </button>
+    <button
+      class="text-left cursor-pointer px-4 py-2 hover:bg-orange/70 transition-colors text-black text-sm"
+      onclick="downloadFormat('jpeg')"
+      type="button"
+    >
+      Formato JPEG
+    </button>
+    <div class="border-t border border-black my-1"></div>
+    <div
+      class="px-4 py-2 flex items-center gap-2 text-black text-sm select-none"
+    >
+      Escala:
+      <span
+        id="scale-x2"
+        class="px-2 py-1 rounded text-black cursor-pointer bg-yellow border border-black hover:bg-orange/80 transition-colors"
+        onclick="toggleScale(2)">x2</span
+      >
+      <span
+        id="scale-x4"
+        class="px-2 py-1 rounded text-black cursor-pointer bg-yellow border border-black hover:bg-orange/80 transition-colors"
+        onclick="toggleScale(4)">x4</span
+      >
+    </div>
+  </div>
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.18s ease;
+    }
+    #download:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+  <script type="text/javascript">
+    let dropdownOpen = false;
+    let selectedScale = 1;
+    function toggleDropdown(e) {
+      e.stopPropagation();
+      const menu = document.getElementById("dropdown-menu");
+      dropdownOpen = !dropdownOpen;
+      if (dropdownOpen) {
+        menu.classList.remove("hidden");
+        menu.classList.add("flex");
+        document.addEventListener("mousedown", closeDropdownOnClickOutside);
+      } else {
+        menu.classList.add("hidden");
+        menu.classList.remove("flex");
+        document.removeEventListener("mousedown", closeDropdownOnClickOutside);
+      }
+    }
+    function closeDropdownOnClickOutside(e) {
+      const dropdown = document.getElementById("astro-download-dropdown");
+      if (dropdown && !dropdown.contains(e.target)) {
+        toggleDropdown(e);
+      }
+    }
+    function toggleScale(val) {
+      if (selectedScale === val) {
+        selectedScale = 1;
+      } else {
+        selectedScale = val;
+      }
+      updateScaleUI();
+    }
+    function updateScaleUI() {
+      const x2 = document.getElementById("scale-x2");
+      const x4 = document.getElementById("scale-x4");
+      x2.classList.toggle("bg-orange", selectedScale === 2);
+      x2.classList.toggle("bg-yellow", selectedScale !== 2);
+      x4.classList.toggle("bg-orange", selectedScale === 4);
+      x4.classList.toggle("bg-yellow", selectedScale !== 4);
+    }
+    function downloadFormat(format) {
+      dropdownOpen = false;
+      document.getElementById("dropdown-menu").classList.add("hidden");
+      document.getElementById("dropdown-menu").classList.remove("flex");
+      // Lógica de descarga: dispara evento personalizado
+      window.dispatchEvent(
+        new CustomEvent("download", {
+          detail: { format, scale: selectedScale || 1 },
+        })
+      );
+    }
+  </script>
+</div>

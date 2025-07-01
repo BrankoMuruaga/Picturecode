@@ -1,5 +1,5 @@
 ---
-import Button from "../components/Button.astro";
+import DownloadDropdown from "../components/DownloadDropdown.astro";
 ---
 
 <nav id="nav" class="flex items-center justify-between">
@@ -10,7 +10,8 @@ import Button from "../components/Button.astro";
     <h1 class="select-none">Picturecode</h1>
   </div>
   <div>
-    <Button id="download" />
+    <!-- Reemplaza el botón por el dropdown React -->
+    <DownloadDropdown onDownload={() => {}} scale={1} setScale={() => {}} />
   </div>
 </nav>
 
@@ -19,11 +20,3 @@ import Button from "../components/Button.astro";
     font-family: "Space Grotesk", sans-serif;
   }
 </style>
-
-<script>
-  const btn = document.getElementById("download");
-
-  btn?.addEventListener("click", () => {
-    btn.dispatchEvent(new CustomEvent("download", { bubbles: true }));
-  });
-</script>

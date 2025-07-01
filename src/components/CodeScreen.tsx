@@ -1,22 +1,22 @@
 import { Resizable } from "re-resizable";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDownloadAsImage } from "../utils/useDownloadAsImage";
+import { getEditorBackground } from "../utils/utils";
 import CodeEditor from "./CodeEditor";
 import CodeHeader from "./CodeHeader";
-import { getEditorBackground } from "../utils/utils";
 
 export default function CodeScreen() {
   const [code, setCode] = useState("console.log('¡Hola mundo!');");
   const [title, setTitle] = useState("Untitled-0");
   const [padding, setPadding] = useState(10);
-  const [scale, setScale] = useState(1);
   const [bgColor, setBgColor] = useState("#ffbd2e");
   const [language, setLanguage] = useState("javascript");
   const [theme, setTheme] = useState("dark");
   const editorBgColor = getEditorBackground(theme);
   const [fontSize, setFontSize] = useState(16);
 
-  useDownloadAsImage(scale);
+  // Hook para escuchar y manejar la descarga
+  useDownloadAsImage();
 
   // Escuchar eventos de los controles
   useEffect(() => {
