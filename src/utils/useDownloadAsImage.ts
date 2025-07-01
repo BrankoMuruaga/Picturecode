@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useDownloadAsImage() {
+export function useDownloadAsImage(title: string = "Untitled-0") {
   useEffect(() => {
     function handleDownload(e: any) {
       const { format, scale } = (e && e.detail) || { format: "png", scale: 1 };
@@ -11,7 +11,8 @@ export function useDownloadAsImage() {
         html2canvas(element, { backgroundColor: null, scale: scale }).then(
           (canvas) => {
             let dataURL;
-            let filename = `codigo-simulado.${format}`;
+            title = title ? title : "Untitled-0";
+            let filename = `${title}.${format}`;
             if (format === "jpeg") {
               dataURL = canvas.toDataURL("image/jpeg");
             } else {
@@ -31,5 +32,5 @@ export function useDownloadAsImage() {
     return () => {
       window.removeEventListener("download", handleDownload);
     };
-  }, []);
+  }, [title]);
 }

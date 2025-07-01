@@ -16,7 +16,7 @@ export default function CodeScreen() {
   const [fontSize, setFontSize] = useState(16);
 
   // Hook para escuchar y manejar la descarga
-  useDownloadAsImage();
+  useDownloadAsImage(title);
 
   // Escuchar eventos de los controles
   useEffect(() => {
